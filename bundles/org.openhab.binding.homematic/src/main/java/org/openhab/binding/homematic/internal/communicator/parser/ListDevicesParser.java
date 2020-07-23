@@ -46,8 +46,8 @@ public class ListDevicesParser extends CommonRpcParser<Object[], Collection<HmDe
         message = (Object[]) message[0];
         Map<String, HmDevice> devices = new HashMap<>();
 
-        for (int i = 0; i < message.length; i++) {
-            Map<String, ?> data = (Map<String, ?>) message[i];
+        for (Object o : message) {
+            Map<String, ?> data = (Map<String, ?>) o;
             boolean isDevice = !StringUtils.contains(toString(data.get("ADDRESS")), ":");
 
             if (isDevice) {

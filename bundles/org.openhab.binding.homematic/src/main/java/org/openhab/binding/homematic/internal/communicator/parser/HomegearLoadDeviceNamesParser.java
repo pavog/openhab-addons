@@ -40,8 +40,8 @@ public class HomegearLoadDeviceNamesParser extends CommonRpcParser<Object[], Voi
         }
 
         message = (Object[]) message[0];
-        for (int i = 0; i < message.length; i++) {
-            Map<String, ?> data = (Map<String, ?>) message[i];
+        for (Object o : message) {
+            Map<String, ?> data = (Map<String, ?>) o;
             String id = toString(data.get("ID"));
             String name = toString(data.get("NAME"));
 

@@ -31,12 +31,12 @@ public class NewDevicesParser extends CommonRpcParser<Object[], List<String>> {
         List<String> adresses = new ArrayList<>();
         if (message != null && message.length > 1) {
             message = (Object[]) message[1];
-            for (int i = 0; i < message.length; i++) {
-                Map<String, ?> data = (Map<String, ?>) message[i];
+            for (Object o : message) {
+                Map<String, ?> data = (Map<String, ?>) o;
 
                 String address = toString(data.get("ADDRESS"));
-                boolean isDevice = !StringUtils.contains(address, ":")
-                        && !StringUtils.startsWithIgnoreCase(address, "BidCos");
+                boolean isDevice = !StringUtils.contains(address, ":") && !StringUtils
+                        .startsWithIgnoreCase(address, "BidCos");
                 if (isDevice) {
                     adresses.add(getSanitizedAddress(address));
                 }

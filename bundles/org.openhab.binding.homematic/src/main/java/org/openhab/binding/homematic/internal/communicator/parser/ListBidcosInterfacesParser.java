@@ -31,8 +31,8 @@ public class ListBidcosInterfacesParser extends CommonRpcParser<Object[], ListBi
     public ListBidcosInterfacesParser parse(Object[] message) throws IOException {
         if (message != null && message.length > 0) {
             message = (Object[]) message[0];
-            for (int i = 0; i < message.length; i++) {
-                Map<String, ?> mapMessage = (Map<String, ?>) message[i];
+            for (Object o : message) {
+                Map<String, ?> mapMessage = (Map<String, ?>) o;
                 boolean isDefault = toBoolean(mapMessage.get("DEFAULT"));
 
                 if (isDefault) {

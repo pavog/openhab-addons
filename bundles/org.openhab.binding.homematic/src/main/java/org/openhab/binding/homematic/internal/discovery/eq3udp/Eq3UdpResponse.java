@@ -65,14 +65,14 @@ public class Eq3UdpResponse {
     }
 
     private String readString(byte[] data, int index) throws IndexOutOfBoundsException {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = index; i < data.length; i++) {
             if (data[i] == 0) {
                 break;
             }
-            result += (char) data[i];
+            result.append((char) data[i]);
         }
-        return result;
+        return result.toString();
     }
 
     private int readInt(byte[] data, int index, int length) throws IndexOutOfBoundsException {
